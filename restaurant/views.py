@@ -24,5 +24,23 @@ def index(request):
 class CookerListView(generic.ListView):
     model = Cooker
     paginate_by = 5
-    template_name = "restaurant/cooks-list.html"
+    template_name = "restaurant/cook_list.html"
 
+
+class CookerDetailView(generic.DetailView):
+    model = Cooker
+    template_name = "restaurant/cook_detail.html"
+
+
+class DishListView(generic.ListView):
+    model = Dish
+
+
+class DishDetailView(generic.DetailView):
+    model = Dish
+
+
+class DishTypeListView(generic.ListView):
+    model = DishType
+    template_name = "restaurant/dish_type_list.html"
+    context_object_name = "dish_type_list"

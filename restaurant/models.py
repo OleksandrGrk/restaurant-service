@@ -22,8 +22,11 @@ class Cooker(AbstractUser):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
     def get_absolute_url(self):
-        return reverse("restaurant:cooker-detail", kwargs={"pk": self.pk})
+        return reverse("restaurant:cook-detail", kwargs={"pk": self.pk})
 
 
 class Dish(models.Model):
