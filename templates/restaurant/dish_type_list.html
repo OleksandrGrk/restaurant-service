@@ -1,0 +1,8 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <h1>Dish Type List</h1>
+  {% for type in dish_type_list %}
+    <p>{{ type.name }}</p>
+  {% endfor %}
+{% endblock %}
