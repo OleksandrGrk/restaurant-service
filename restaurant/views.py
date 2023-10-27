@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
-from restaurant.forms import CookerCreationForm
+from restaurant.forms import CookerCreationForm, DishCreationForm, DishTypeCreationForm
 from restaurant.models import Dish, Cooker, DishType
 
 
@@ -38,6 +39,7 @@ class CookerCreationView(generic.CreateView):
     model = Cooker
     form_class = CookerCreationForm
     template_name = "restaurant/cook_create.html"
+    success_url = reverse_lazy("restaurant:index")
 
 
 class DishListView(generic.ListView):
@@ -48,7 +50,21 @@ class DishDetailView(generic.DetailView):
     model = Dish
 
 
+class DishCreateView(generic.CreateView):
+    model = Dish
+    form_class = DishCreationForm
+    template_name = "restaurant/dish_create.html"
+    success_url = reverse_lazy("restaurant:index")
+
+
 class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "restaurant/dish_type_list.html"
     context_object_name = "dish_type_list"
+
+
+class DishTypeCreateView(generic.CreateView):
+    model = DishType
+    form_class = DishTypeCreationForm
+    template_name = "restaurant/dish_type_create.html"
+    success_url = reverse_lazy("restaurant:index")
