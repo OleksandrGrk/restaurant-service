@@ -1,6 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
 
+from restaurant.forms import CookerCreationForm
 from restaurant.models import Dish, Cooker, DishType
 
 
@@ -30,6 +32,12 @@ class CookerListView(generic.ListView):
 class CookerDetailView(generic.DetailView):
     model = Cooker
     template_name = "restaurant/cook_detail.html"
+
+
+class CookerCreationView(generic.CreateView):
+    model = Cooker
+    form_class = CookerCreationForm
+    template_name = "restaurant/cook_create.html"
 
 
 class DishListView(generic.ListView):
