@@ -63,7 +63,7 @@
               <div class="col-md-4 position-relative">
                 <div class="p-3 text-center">
                   <h1 class="text-gradient text-primary"><span id="state1" countTo="{{ num_cooks }}">{{ num_cooks }}</span>+</h1>
-                  <h5 class="mt-3">Cooks</h5>
+                  <h5 class="mt-3"><a href="{% url 'restaurant:cook-list' %}">Cooks</a></h5>
                   <p class="text-sm font-weight-normal">Only the best cooks in your city</p>
                 </div>
                 <hr class="vertical dark">
@@ -71,7 +71,7 @@
               <div class="col-md-4 position-relative">
                 <div class="p-3 text-center">
                   <h1 class="text-gradient text-primary"> <span id="state2" countTo="{{ num_dishes }}">{{ num_dishes }}</span>+</h1>
-                  <h5 class="mt-3">Dishes</h5>
+                  <h5 class="mt-3"><a href="{% url 'restaurant:dish-list' %}">Dishes</a></h5>
                   <p class="text-sm font-weight-normal">All you want from pasta to sushi</p>
                 </div>
                 <hr class="vertical dark">
@@ -79,7 +79,7 @@
               <div class="col-md-4">
                 <div class="p-3 text-center">
                   <h1 class="text-gradient text-primary" id="state3" countTo="{{ num_dish_types }}">{{ num_dish_types }}</h1>
-                  <h5 class="mt-3">Dish Types</h5>
+                  <h5 class="mt-3"><a href="{% url 'restaurant:dish-type-list' %}">Dish Types</a></h5>
                   <p class="text-sm font-weight-normal">Wide menu</p>
                 </div>
               </div>
@@ -134,25 +134,21 @@
             <h6 class="text-sm">Company</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/presentation" target="_blank">
+                <a class="nav-link" href="{% url 'restaurant:index' %}" target="_blank">
                   About Us
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/templates/free" target="_blank">
-                  Freebies
+                <a class="nav-link" href="{% url 'restaurant:cook-list' %}" target="_blank">
+                  Cooks
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/templates/premium" target="_blank">
-                  Premium Tools
+                <a class="nav-link" href="{% url 'restaurant:dish-list' %}" target="_blank">
+                  Dishes
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/blog" target="_blank">
-                  Blog
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>
@@ -161,17 +157,17 @@
             <h6 class="text-sm">Resources</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
-                <a class="nav-link" href="https://iradesign.io/" target="_blank">
+                <a class="nav-link" href="" target="_blank">
                   Delivery
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                <a class="nav-link" href="" target="_blank">
                   News
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://www.creative-tim.com/affiliates/new" target="_blank">
+                <a class="nav-link" href="" target="_blank">
                   Booking
                 </a>
               </li>
