@@ -21,7 +21,7 @@ urlpatterns = [
     path("dish/<int:pk>", DishDetailView.as_view(), name="dish-detail"),
     path("dish/create/", DishCreateView.as_view(), name="dish-create"),
     path("dish_type/create/", DishTypeCreateView.as_view(), name="dish-type-create"),
-    path("types/", DishTypeListView.as_view(), name="type-list")
+    path("dish/types/", DishTypeListView.as_view(), name="dish-type-list"),
 ]
 
 app_name = "restaurant"
