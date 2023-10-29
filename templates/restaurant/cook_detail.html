@@ -16,16 +16,43 @@
       </div>
     </header>
   <br>
-  <p>{{ cooker.years_of_experience }} year{{ cooker.years_of_experience|pluralize}} in cooking!</p>
+  <h5>{{ cooker.years_of_experience }} year{{ cooker.years_of_experience|pluralize}} in cooking!</h5>
   <br>
   <h1 class="text-black pt-3 mt-n5">Can cook for you such dishes:</h1>
   {% for dish in cooker.dishes.all %}
-    <li>
-      <a href="{% url 'restaurant:dish-detail' pk=dish.id %}">
-        {{ dish.name }}
-      </a>
-       - {{ dish.price }}
-    </li>
+<!--    <li>-->
+<!--      <a href="{% url 'restaurant:dish-detail' pk=dish.id %}">-->
+<!--        {{ dish.name }}-->
+<!--      </a>-->
+<!--       - {{ dish.price }}-->
+<!--    </li>-->
+  <section class="my-5 py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+            <div class="rotating-card-container">
+              <div class="card card-rotate card-background card-background-mask-primary shadow-primary mt-md-0 mt-5">
+                <div class="front front-background" style="background-image: url('{{ ASSETS_ROOT }}/img/{{ dish.name.lower }}.jpg'); background-size: cover;">
+                  <div class="card-body py-7 text-center">
+                    <i class="material-icons text-white text-4xl my-3">touch_app</i>
+                    <h3 class="text-white">{{ dish.name }}</h3>
+                    <p class="text-white opacity-8">Price: {{ dish.price}} $</p>
+                  </div>
+                </div>
+                <div class="back back-background" style="background-image: url('{{ ASSETS_ROOT }}/img/{{ dish.name.lower }}.jpg'); background-size: cover;">
+                  <div class="card-body pt-7 text-center">
+                    <h3 class="text-white">{{ dish.dish_type}}</h3>
+                    <p class="text-white opacity-8">{{ dish.description }}</p>
+                    <a href="{% url 'restaurant:dish-detail' pk=dish.id %}" class="btn btn-white btn-sm w-50 mx-auto mt-3">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   {% endfor %}
+
 
 {% endblock %}
