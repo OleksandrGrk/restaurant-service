@@ -34,3 +34,12 @@ class DishTypeCreationForm(forms.ModelForm):
     class Meta:
         model = DishType
         fields = "__all__"
+
+
+class CookerSearchForm(forms.Form):
+    username = forms.CharField(
+        required=True,
+        max_length=255,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Enter cook name..."})
+    )

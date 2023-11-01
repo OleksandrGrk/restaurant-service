@@ -24,7 +24,7 @@ def index(request):
     return render(request, template_name="restaurant/index.html", context=context)
 
 
-class CookerListView(generic.ListView):
+class CookerListView(LoginRequiredMixin, generic.ListView):
     model = Cooker
     paginate_by = 2
     template_name = "restaurant/cook_list.html"
