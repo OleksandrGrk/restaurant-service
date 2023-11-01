@@ -56,6 +56,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "restaurant_service.urls"
 
+LOGIN_REDIRECT_URL = "/restaurant/"
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

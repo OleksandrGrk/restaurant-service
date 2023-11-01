@@ -2,14 +2,23 @@
 
 
 {% block content %}
-<div class="container">
-    <h1 class="text-center">OUR COOKS</h1>
-    {% for cooker in cooker_list %}
-      <img width="40%" height="auto" src="{{ ASSETS_ROOT }}/img/{{ cooker.first_name.lower }}_{{cooker.last_name.lower}}.jpg" alt="">
-      <a href="{{ cooker.get_absolute_url }}">
-        <p>{{ cooker.first_name }} {{cooker.last_name}}</p>
-      </a>
-    {% endfor %}
+<div clasq="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+    <section class="pt-3 pb-4" id="count-stats">
+      <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="container">
+                    <h1 class="text-center">OUR COOKS</h1>
+                    {% for cooker in cooker_list %}
+                      <img width="40%" height="auto" src="{{ ASSETS_ROOT }}/img/{{ cooker.first_name.lower }}_{{cooker.last_name.lower}}.jpg" alt="">
+                      <a href="{{ cooker.get_absolute_url }}">
+                        <p>{{ cooker.first_name }} {{cooker.last_name}}</p>
+                      </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+      </div>
 </div>
 
 {% endblock %}
