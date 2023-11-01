@@ -17,5 +17,8 @@
   {% else %}
     <p>There are no dishes available</p>
   {% endif %}
+  {% block pagination %}
+    {% include "includes/pagination.html" %}
+  {% endblock %}
 
 {% endblock %}

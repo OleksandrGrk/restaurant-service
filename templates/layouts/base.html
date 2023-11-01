@@ -43,9 +43,7 @@
 <body class="{% block body_class %}{% endblock %} bg-gray-200">
 
   {% block content %}{% endblock content %}
-  {% block pagination %}
-    {% include "includes/pagination.html" %}
-  {% endblock %}
+
   {% include 'includes/footer.html' %}
 
   {% include 'includes/scripts.html' %} 

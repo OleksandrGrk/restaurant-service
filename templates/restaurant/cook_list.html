@@ -1,13 +1,15 @@
 {% extends "layouts/base.html" %}
-
+{% load crispy_forms_filters %}
 
 {% block content %}
-<div clasq="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
     <section class="pt-3 pb-4" id="count-stats">
       <div class="container">
         <div class="row">
             <div class="row">
                 <div class="container">
+                  <br>
+                  <br>
                     <h1 class="text-center">OUR COOKS</h1>
                     {% for cooker in cooker_list %}
                       <img width="40%" height="auto" src="{{ ASSETS_ROOT }}/img/{{ cooker.first_name.lower }}_{{cooker.last_name.lower}}.jpg" alt="">
@@ -16,9 +18,19 @@
                       </a>
                     {% endfor %}
                 </div>
+                <form action="" method="get" class="form-inline">
+                  {{ search_form|crispy }}
+                <input class="btn btn-secondary" type="submit" value="search">
+              </form>
             </div>
+          {% block pagination %}
+            {% include "includes/pagination.html" %}
+          {% endblock %}
         </div>
       </div>
+    </section>
 </div>
+
+
 
 {% endblock %}
