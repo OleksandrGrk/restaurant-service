@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from restaurant.forms import CookerCreationForm, DishCreationForm, DishTypeCreationForm
+from restaurant.forms import CookerCreationForm, DishCreationForm, DishTypeCreationForm, CookerSearchForm, \
+    DishSearchForm
 from restaurant.models import Dish, Cooker, DishType
 
 
@@ -29,6 +30,23 @@ class CookerListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 2
     template_name = "restaurant/cook_list.html"
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CookerListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = CookerSearchForm(
+            initial={"username": username}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Cooker.objects.all()
+        form = CookerSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return queryset
+
 
 class CookerDetailView(generic.DetailView):
     model = Cooker
@@ -44,7 +62,24 @@ class CookerCreationView(generic.CreateView):
 
 class DishListView(generic.ListView):
     model = Dish
-    paginate_by = 2
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+        context["search_form"] = DishSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Dish.objects.all()
+        form = DishSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return queryset
 
 
 class DishDetailView(generic.DetailView):

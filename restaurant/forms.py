@@ -41,5 +41,18 @@ class CookerSearchForm(forms.Form):
         required=True,
         max_length=255,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Enter cook name..."})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Enter cook name..."}
+        )
+    )
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        required=True,
+        max_length=255,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Enter cook name..."}
+        )
     )
