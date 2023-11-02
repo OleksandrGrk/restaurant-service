@@ -53,6 +53,6 @@ class DishSearchForm(forms.Form):
         max_length=255,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "Enter cook name..."}
+            attrs={"placeholder": "Enter dish name..."}
         )
     )

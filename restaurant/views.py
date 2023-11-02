@@ -53,7 +53,7 @@ class CookerDetailView(generic.DetailView):
     template_name = "restaurant/cook_detail.html"
 
 
-class CookerCreationView(generic.CreateView):
+class CookerCreationView(LoginRequiredMixin, generic.CreateView):
     model = Cooker
     form_class = CookerCreationForm
     template_name = "restaurant/cook_create.html"
@@ -86,7 +86,7 @@ class DishDetailView(generic.DetailView):
     model = Dish
 
 
-class DishCreateView(generic.CreateView):
+class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
     form_class = DishCreationForm
     template_name = "restaurant/dish_create.html"
@@ -100,7 +100,7 @@ class DishTypeListView(generic.ListView):
     paginate_by = 2
 
 
-class DishTypeCreateView(generic.CreateView):
+class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     model = DishType
     form_class = DishTypeCreationForm
     template_name = "restaurant/dish_type_create.html"
