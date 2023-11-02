@@ -1,8 +1,31 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-  <h1>Dish Type List</h1>
-  {% for type in dish_type_list %}
-    <p>{{ type.name }}</p>
-  {% endfor %}
+{% include 'includes/navigation-transparent.html' %}
+<header class="header-2">
+  <div class="page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg-dish-list.jpg')">
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white mb-2 mt-5">Dish Types</h1>
+            {% if dish_type_list %}
+              <ul style="list-style-type: none">
+                {% for type in dish_type_list %}
+                  <li class="text-white">{{ type.name }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>There are no dishes available</p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% block pagination %}
+  {% include "includes/pagination.html" %}
+{% endblock %}
+
 {% endblock %}

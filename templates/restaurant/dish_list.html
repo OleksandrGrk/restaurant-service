@@ -2,40 +2,39 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-
-
+{% include 'includes/navigation-transparent.html' %}
 <header class="header-2">
-    <div class="page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg-dish-list.jpg')">
-      <span class="mask bg-gradient-dark opacity-6"></span>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center mx-auto my-auto">
-            <h1 class="text-white mb-2 mt-5">Dish List</h1>
-              {% if dish_list %}
-                <ul style="list-style-type: none">
-                  {% for dish in dish_list %}
-                    <li>
-                      <a href="{% url 'restaurant:dish-detail' pk=dish.id %}" style="color: white">
-                        {{ dish.name }}
-                        - {{ dish.price }}
-                      </a>
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                <p>There are no dishes available</p>
-              {% endif %}
-          </div>
+  <div class="page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg-dish-list.jpg')">
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white mb-2 mt-5">Dish List</h1>
+            {% if dish_list %}
+              <ul style="list-style-type: none">
+                {% for dish in dish_list %}
+                  <li>
+                    <a href="{% url 'restaurant:dish-detail' pk=dish.id %}" style="color: white">
+                      {{ dish.name }}
+                      - {{ dish.price }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>There are no dishes available</p>
+            {% endif %}
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <form action="" method="get" class="form-inline">
-    {{ search_form|crispy }}
-  <input class="btn btn-secondary" type="submit" value="search">
-  {% block pagination %}
-    {% include "includes/pagination.html" %}
-  {% endblock %}
+<form action="" method="get" class="form-inline">
+  {{ search_form|crispy }}
+<input class="btn btn-secondary" type="submit" value="search">
+{% block pagination %}
+  {% include "includes/pagination.html" %}
+{% endblock %}
 
 {% endblock %}
