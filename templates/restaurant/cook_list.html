@@ -31,6 +31,7 @@
   <form action="" method="get" class="form-inline">
     {{ search_form|crispy }}
   <input class="btn btn-secondary" type="submit" value="search">
+  </form>
   {% block pagination %}
     {% include "includes/pagination.html" %}
   {% endblock %}
