@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from restaurant.forms import CookerCreationForm, DishCreationForm, DishTypeCreationForm, CookerSearchForm, \
-    DishSearchForm
+    DishSearchForm, CookerDishesUpdateForm, DishUpdateForm
 from restaurant.models import Dish, Cooker, DishType
 
 
@@ -97,7 +97,7 @@ class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "restaurant/dish_type_list.html"
     context_object_name = "dish_type_list"
-    paginate_by = 2
+    paginate_by = 8
 
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
@@ -105,3 +105,18 @@ class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = DishTypeCreationForm
     template_name = "restaurant/dish_type_create.html"
     success_url = reverse_lazy("restaurant:index")
+
+
+class CookerUpdateView(generic.UpdateView):
+    model = Cooker
+    form_class = CookerDishesUpdateForm
+    template_name = "restaurant/cook_update.html"
+    success_url = reverse_lazy("restaurant:cook-list")
+
+
+class DishUpdateView(generic.UpdateView):
+    model = Dish
+    form_class = DishUpdateForm
+    template_name = "restaurant/dish_update.html"
+    success_url = reverse_lazy("restaurant:dish-list")
+

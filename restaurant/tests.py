@@ -35,10 +35,8 @@ class TestForm(TestCase):
             "cooks": get_user_model().objects.all()
         }
         form = DishCreationForm(data=data)
-        print(form.is_valid())
-        print(form.errors)
         self.assertTrue(form.is_valid())
-        # self.assertEquals(form.cleaned_data, data)
+        self.assertQuerysetEqual(form.cleaned_data, data, transform=lambda x: x)
 
     def test_cooker_with_invalid_years_of_experience(self):
         data = {
@@ -159,28 +157,27 @@ class PrivateDishTest(TestCase):
         response = self.client.get(DISH_URL)
         self.assertEquals(response.status_code, 200)
         dishes = Dish.objects.all()
-        self.assertEquals(list(response.context["car_list"]), list(dishes))
-#
-#
-# class CarSearchModelTest(TestCase):
-#     @classmethod
-#     def setUpTestData(cls):
-#         manufacturer = Manufacturer.objects.create(
-#             name="test",
-#             country="country1"
-#         )
-#         models = [
-#             "nissan",
-#             "opel",
-#             "volskvagen",
-#             "mercedes",
-#             "kia",
-#             "shevrolet",
-#             "renault"
-#         ]
-#         for model in models:
-#             Car.objects.create(model=model, manufacturer=manufacturer)
-#
+        self.assertEquals(list(response.context["dish_list"]), list(dishes))
+
+
+class DishSearchModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        manufacturer = DishType.objects.create(
+            name="test",
+        )
+        dishes = [
+            "nissan",
+            "opel",
+            "volskvagen",
+            "mercedes",
+            "kia",
+            "shevrolet",
+            "renault"
+        ]
+        for model in dishes:
+            Dish.objects.create(model=model, manufacturer=manufacturer)
+
 #     def setUp(self) -> None:
 #         self.user = get_user_model().objects.create_user(
 #             username="test_user", password="test1234"

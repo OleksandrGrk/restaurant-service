@@ -19,6 +19,11 @@ class CookerCreationForm(UserCreationForm):
 
 
 class DishCreationForm(forms.ModelForm):
+    dish_type = forms.ModelChoiceField(
+        label="hello",
+        queryset=DishType.objects.all(),
+        widget=forms.Select
+    )
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -56,3 +61,15 @@ class DishSearchForm(forms.Form):
             attrs={"placeholder": "Enter dish name..."}
         )
     )
+
+
+class CookerDishesUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cooker
+        fields = ["username"]
+
+
+class DishUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Dish
+        fields = ["price"]
