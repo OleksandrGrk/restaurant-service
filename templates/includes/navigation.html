@@ -18,7 +18,6 @@
               <ul class="navbar-nav navbar-nav-hover ms-auto">
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
                     Pages
                     <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
                   </a>
@@ -43,9 +42,58 @@
                         <span>Sign In</span>
                       </a>
                     </div>
-
                   </div>
                 </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
+                    Add new
+                    <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-auto ms-md-2">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md dropdown-md-responsive p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuBlocks">
+                    <div class="d-none d-lg-block">
+                      <li class="nav-item dropdown dropdown-hover dropdown-subitem">
+                        <div class="dropdown-item py-2 ps-3 border-radius-md">
+                          <div class="w-100 d-flex align-items-center justify-content-between">
+                            <div>
+                              <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Create pages</h6>
+                              <span class="text-sm">Make something new!</span>
+                            </div>
+                            <img src="{{ ASSETS_ROOT }}/img/down-arrow.svg" alt="down-arrow" class="arrow">
+                          </div>
+                        </div>
+                        <div class="dropdown-menu mt-0 py-3 px-2 mt-3">
+                          <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'restaurant:cook-create' %}">
+                            Create Cook
+                          </a>
+                          <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'restaurant:dish-create' %}">
+                            Create Dish
+                          </a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown dropdown-hover dropdown-subitem">
+                        <div class="dropdown-item py-2 ps-3 border-radius-md">
+                          <div class="w-100 d-flex align-items-center justify-content-between">
+                            <div>
+                              <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Update pages</h6>
+                              <span class="text-sm">Change existing</span>
+                            </div>
+                            <img src="{{ ASSETS_ROOT }}/img/down-arrow.svg" alt="down-arrow" class="arrow">
+                          </div>
+                        </div>
+                        <div class="dropdown-menu mt-0 py-3 px-2 mt-3">
+                          <a class="dropdown-item ps-3 border-radius-md mb-1" href="/ui-navigation-navbars.html">
+                            Update Cook
+                          </a>
+                          <a class="dropdown-item ps-3 border-radius-md mb-1" href="/ui-navigation-nav-tabs.html">
+                            Update Dish
+                          </a>
+                        </div>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+                {% endif %}
 
                 {% if request.user.is_authenticated %}
                   <li class="nav-item ms-lg-auto">

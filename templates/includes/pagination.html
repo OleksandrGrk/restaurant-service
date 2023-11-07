@@ -7,17 +7,17 @@
       <ul class="pagination">
       {% if page_obj.has_previous %}
         <li class="page-item active">
-          <a  class="page-link" href="?{% query_transform request page=page_obj.previous_page_number%}">{{ page_obj.previous_page_number }}</a>
+          <a class="page-link" href="?{% query_transform request page=page_obj.previous_page_number%}">{{ page_obj.previous_page_number }}</a>
         </li>
       {% endif %}
-          <li class="page-item">
-            <div class="page-link">{{ page_obj.number }}</div>
-          </li>
-        {% if page_obj.has_next %}
-          <li class="page-item active">
-            <a class="page-link" href="?{% query_transform request page=page_obj.next_page_number%}">{{ page_obj.next_page_number }}</a>
-          </li>
-        {% endif %}
+        <li class="page-item">
+          <div class="page-link">{{ page_obj.number }}</div>
+        </li>
+      {% if page_obj.has_next %}
+        <li class="page-item active">
+          <a class="page-link" href="?{% query_transform request page=page_obj.next_page_number%}">{{ page_obj.next_page_number }}</a>
+        </li>
+      {% endif %}
       </ul>
     </div>
 
