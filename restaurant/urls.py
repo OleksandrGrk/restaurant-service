@@ -14,7 +14,7 @@ from restaurant.views import (
 )
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", index.as_view(), name="index"),
     path("cooks/", CookerListView.as_view(), name="cook-list"),
     path("cook/<int:pk>/", CookerDetailView.as_view(), name="cook-detail"),
     path("cook/<int:pk>/update", CookerUpdateView.as_view(), name="cook-update"),
