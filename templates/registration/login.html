@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+<section>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+        <h3 class="text-center">Login</h3>
+        <form method="post" action="{% url 'login' %}" novalidate>
+          {% csrf_token %}
+          {{ form|crispy }}
+
+          <input type="submit" value="Login" class="btn btn-primary" />
+          <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+        {% if next %}
+          <p>Please login to see this page.</p>
+        {% endif %}
+        {% if form.errors %}
+          <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

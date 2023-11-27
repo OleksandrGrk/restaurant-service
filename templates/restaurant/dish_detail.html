@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <h1>{{ dish.name }} detail</h1>
+  <img rel="icon" width="100%" height="auto" src="{{ ASSETS_ROOT }}/img/{{ dish.name.lower }}.jpg">
+  <p>Price: {{ dish.price }}</p>
+  <a href="{% url 'restaurant:dish-update' pk=dish.id %}" class="btn btn-danger link-to-page">
+    Update dish`s price
+  </a>
+  <p>Description: {{ dish.description }}</p>
+  <p>Dish type: {{ dish.dish_type}}</p>
+  <h3>Available cooks:</h3>
+  {% for cook in dish.cooks.all %}
+    <a href="{{ cook.get_absolute_url }}">
+      <li>{{ cook.get_full_name }}</li>
+    </a>
+  {% endfor %}
+{% endblock %}

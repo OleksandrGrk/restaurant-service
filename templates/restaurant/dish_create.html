@@ -1,0 +1,65 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+<section>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+        <h3 class="text-center">Create your uwn Dish</h3>
+        <form role="form" id="contact-form" method="post" autocomplete="off">
+          {% csrf_token %}
+<!--          {{ form|crispy }}-->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-dynamic mb-4">
+                  <label class="form-label">Name</label>
+                  {{form.name}}
+                </div>
+              </div>
+              <div class="col-md-6 ps-2">
+                <div class="input-group input-group-dynamic">
+                  <label class="form-label">Price</label>
+                  {{form.price}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-4 col-md-6">
+                <div class="input-group">
+                  <label class="form-label"></label>
+                  {{form.dish_type}}
+                </div>
+              </div>
+              <div class="col-md-6 ps-2">
+                <div class="input-group">
+                  <label class="form-label"></label>
+                  {{form.cooks}}
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-4 input-group-static">
+              <label>Description</label>
+              {{form.description}}
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-check form-switch mb-4 d-flex align-items-center">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+                  <label class="form-check-label ms-3 mb-0" for="flexSwitchCheckDefault">I agree to the <a href="javascript:;" class="text-dark"><u>Terms and Conditions</u></a>.</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button type="submit" class="btn bg-gradient-dark w-100">Create</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
